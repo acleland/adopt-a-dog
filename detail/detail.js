@@ -3,13 +3,12 @@ import { renderDogDetail } from '../render-utils.js';
 
 const dogDetailContainer = document.getElementById('dog-detail-container');
 
-const params = new URLSearchParams(window.location.search);
-const id = params.get('id');
 // on load
-window.addEventListener('load', async () => {
+window.addEventListener('load', async() => {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
-    console.log(id);
+    const dog = await getDog(id);
+    dogDetailContainer.append(renderDogDetail(dog));
 });
 // get the id from URL
 // use the id to fetch the dog
